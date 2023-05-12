@@ -25,8 +25,7 @@ for(i in 1:length(sc_list)) {
   
 }
 
-#all_dat <- merge(x = sc_obj2[["Naive"]], y = c(sc_obj2[["D14"]], sc_obj2[["IgG"]], sc_obj2[["aCSF1R"]]),
-#                add.cell.ids = c("Naive", "D14", "IgG", "aCSF1R"), project = "schmid")
+
 all_dat <- merge(x = sc_obj2[["Naive"]], y = c(sc_obj2[["IgG"]], sc_obj2[["aCSF1R"]]),
                  add.cell.ids = c("Naive", "IgG", "aCSF1R"), project = "schmid")
 
