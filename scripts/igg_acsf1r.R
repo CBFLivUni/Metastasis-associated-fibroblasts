@@ -81,7 +81,7 @@ DimPlot(all_dat, pt.size = 2, label = T)
 
 ############# RECLUSTER ###############
 
-###This is now SCTransform all_dat without D14 from the start
+
 
 all_dat <- RunPCA(all_dat) %>% 
   RunUMAP(dims = 1:30, n.neighbors = 10) %>%
@@ -259,7 +259,6 @@ DimPlot(cafs, pt.size = 1, label = F, group.by = "orig.ident")
 
 #### CAFS & IGG ALONE
 
-### For this all_dat needs to be filtered with less stringent cutoffs to retain as much aCSF1R & IgG as possible
 
 cafs <- cafs[,cafs$orig.ident != "Naive"]
 
