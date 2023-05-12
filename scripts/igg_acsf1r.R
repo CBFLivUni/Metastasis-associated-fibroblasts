@@ -618,7 +618,7 @@ unique(cafs@meta.data$celltype_cluster)
 
 
 
-#plots for Mei's talk
+
 
 caf_landscape <- c("Acta2", "Pdgfra", "Pdgfrb", "Ly6a", "Postn", "Tnc", "Mif", "Spp1", "Col1a1", "Col1a2", "Has2", "Hgf", "Lrat", "Myh11", "Gsn", "Cxcl12", "Gas6", "Fbln2")
 
