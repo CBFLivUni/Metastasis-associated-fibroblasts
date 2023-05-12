@@ -2,7 +2,7 @@
 # sudo docker volume prune
 
 
-docker run -d --cpus 30 -m 125g -p 8905:8787 -e ROOT=TRUE -e PASSWORD=schmid_sc --name schmid_fibroblasts -e USERID=$(id -u) \
+docker run -d --cpus 30 -m 125g -p 8905:8787 -e ROOT=TRUE -e PASSWORD=****** --name ******* -e USERID=$(id -u) \
 	-v $(pwd):/home/rstudio/project \
 	-v /home/cbf-shared/CBF_projects:/home/rstudio/data\
 	rocker/tidyverse:4.0.2
