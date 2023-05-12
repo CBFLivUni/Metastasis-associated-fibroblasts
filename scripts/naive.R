@@ -27,8 +27,6 @@ for(i in 1:length(sc_list)) {
 class(sc_obj2[["Naive"]])
 
 library(Seurat)
-#all_dat <- merge(x = sc_obj2[["Naive"]], y = c(sc_obj2[["D14"]], sc_obj2[["IgG"]], sc_obj2[["aCSF1R"]]),
-#                add.cell.ids = c("Naive", "D14", "IgG", "aCSF1R"), project = "schmid")
 all_dat <- merge(x = sc_obj2[["Naive"]], y = c(sc_obj2[["IgG"]], sc_obj2[["aCSF1R"]]),
                  add.cell.ids = c("Naive", "IgG", "aCSF1R"), project = "schmid")
 
@@ -68,8 +66,6 @@ DimPlot(all_dat, label = T)
 
 ############# RECLUSTER ###############
 
-###This is now SCTransform all_dat without D14 from the start
-
 all_dat <- RunPCA(all_dat) %>% 
   RunUMAP(dims = 1:50, n.neighbors = 30) %>%
   FindNeighbors(dims = 1:50) %>% 
@@ -89,17 +85,13 @@ DimPlot(not_cafs)
 not_cafs <- not_cafs[,not_cafs@reductions$umap@cell.embeddings[,2] < 2.5]
 
 
-### For naive alone, data was filtered with more stringent cutoffs due to cells that had slightly odd clustering, potentially due to expresion issues. 
-#The cutoffs for filtering for Naive alone were; subset = nFeature_RNA < 6500 & nFeature_RNA > 1500 & percent.mt < 10
-### full details of the code can be found in Log_of_project_work
-
 
 naive_alone <- not_cafs
 naive_alone <- naive_alone[,naive_alone$orig.ident == "Naive"]
 DimPlot(naive_alone, group.by = "orig.ident")
 
 
-#n.neighbors was 30 res = 0.5 dims = 50
+
 naive_alone <- RunPCA(naive_alone) %>% 
   FindNeighbors(dims = 1:10, k.param = 20) %>%
   RunUMAP(dims = 1:10, n.neighbors = 50, min.dist = 0.5) %>%
@@ -251,10 +243,7 @@ library(SeuratWrappers)
 SeuratWrappers::ExportToCellbrowser(object = cafs, dir = "../project/IgGaCSF1R_Final/", 
                                     dataset.name = "IgG_aCSF1R_CAFS_0511", reductions = "umap")
 
-ExportToCellbrowser
 
-remotes::install_version("Seurat", version = "3.2.3")
-library(Seurat)
 
 
 
